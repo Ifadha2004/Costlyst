@@ -1,0 +1,13 @@
+# Node
+node_modules/
+dist/
+.env
+
+# Go
+bin/
+*.exe
+*.out
+
+# IDE / OS files
+.vscode/
+.DS_Store
