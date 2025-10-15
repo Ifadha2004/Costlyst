@@ -1,19 +1,18 @@
 package types
 
-type Item struct {
+import "time"
+
+type Envolpe map[string]any
+
+type DBItem struct {
+	ID		int64     `json:"id"`
 	Name     string  `json:"name"`
 	Price    float64 `json:"price"`
 	Quantity int     `json:"quantity"`
+	CreatedAt time.Time `json:"createdAt"`
 }
 
-type BulkItemsRequest struct {
-	Items []Item `json:"items"`
-}
-
-type StatsResponse struct {
-	LineItemCount int64   `json:"lineItemCount"`
-	TotalQuantity int64   `json:"totalQuantity"`
-	TotalCost     float64 `json:"totalCost"`
-	AvgUnitPrice  float64 `json:"avgUnitPrice"`
-	AvgLineCost   float64 `json:"avgLineCost"`
+type BulkResult struct {
+	Batch StatsResponse `json:"batch"`
+	Global StatsResponse `json:"global"`
 }
