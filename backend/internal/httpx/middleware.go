@@ -5,6 +5,16 @@ import (
 	"net/http"
 )
 
+type Envelope map[string]any
+
+func OK(w http.ResponseWriter, message string, data any) {
+	WriteJSON(w, http.StatusOK, Envelope{"message": message, "data": data})
+}
+
+func Error(w http.ResponseWriter, code int, message string) {
+	WriteJSON(w, code, Envelope{"message": message})
+}
+
 func ApplyCORSHeaders(origin string, w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", origin)
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")

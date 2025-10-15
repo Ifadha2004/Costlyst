@@ -1,42 +1,28 @@
 package items
 
-import (
-	"math"
+func round2(f float64) float64 { return float64(int64(f*100+0.5)) / 100 }
+func isNaN(f float64) bool     { return f != f }
+func isInf(f float64) bool     { return f > 1e308 || f < -1e308 }
 
-	"techverin-backend/internal/types"
-)
+type Row struct {
+	Name     string
+	Price    float64
+	Quantity int
+}
 
-func round2(f float64) float64 { return math.Round(f*100) / 100 }
-
-func ComputeBatchStats(items []types.Item) types.StatsResponse {
-	var (
-		count    int64
-		totalQty int64
-		sumCost  float64
-		sumUnit  float64
-	)
-
-	for _, it := range items {
-		if it.Name == "" || it.Price < 0 || it.Quantity < 1 {
-			continue
-		}
-		count++
-		totalQty += int64(it.Quantity)
-		sumCost += float64(it.Quantity) * it.Price
-		sumUnit += it.Price
+// Compute stats for the CURRENT submission (batch-only).
+func ComputeBatchStats(rows []Row) (lineCount int64, totalQty int64, totalCost, avgUnit, avgLine float64) {
+	lineCount = int64(len(rows))
+	for _, r := range rows {
+		totalQty += int64(r.Quantity)
+		totalCost += float64(r.Quantity) * r.Price
 	}
-
-	var avgUnit, avgLine float64
-	if count > 0 {
-		avgUnit = sumUnit / float64(count)
-		avgLine = sumCost / float64(count)
+	totalCost = round2(totalCost)
+	if totalQty > 0 {
+		avgUnit = round2(totalCost / float64(totalQty))
 	}
-
-	return types.StatsResponse{
-		LineItemCount: count,
-		TotalQuantity: totalQty,
-		TotalCost:     round2(sumCost),
-		AvgUnitPrice:  round2(avgUnit),
-		AvgLineCost:   round2(avgLine),
+	if lineCount > 0 {
+		avgLine = round2(totalCost / float64(lineCount))
 	}
+	return
 }
