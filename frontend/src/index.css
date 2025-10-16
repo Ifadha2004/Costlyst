@@ -78,10 +78,10 @@ html, body, #root { height: 100%; }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .animate-type-6, .animate-caret, .animate-float, .animate-glow, .animate-fadeUp {
-    animation: none !important;
-  }
+  .animate-typewriter { animation: none !important; width: auto !important; }
+  .animate-caret { animation: none !important; opacity: 1 !important; }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .animate-typewriter, .animate-caret, .animate-float, .animate-sweep, .animate-pulseGlow { animation: none !important; }
