@@ -50,11 +50,11 @@ export default function ItemsPage() {
 
       {stats && (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, marginTop: 16 }}>
-          <Card label="Line Items" value={stats.lineItemCount} />
-          <Card label="Total Quantity" value={stats.totalQuantity} />
-          <Card label="Total Cost (LKR)" value={stats.totalCost.toFixed(2)} />
-          <Card label="Avg Unit Price (LKR)" value={stats.avgUnitPrice.toFixed(2)} />
-          <Card label="Avg Line Cost (LKR)" value={stats.avgLineCost.toFixed(2)} />
+          <Card label="Line Items" value={stats.lineItemCount || 0} />
+          <Card label="Total Quantity" value={stats.totalQuantity || 0} />
+          <Card label="Total Cost (LKR)" value={(stats.totalCost || 0).toFixed(2)} />
+          <Card label="Avg Unit Price (LKR)" value={(stats.avgUnitPrice || 0).toFixed(2)} />
+          <Card label="Avg Line Cost (LKR)" value={(stats.avgLineCost || 0).toFixed(2)} />
         </div>
       )}
 
