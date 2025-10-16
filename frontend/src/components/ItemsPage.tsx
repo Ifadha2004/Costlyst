@@ -115,7 +115,7 @@ export default function ItemsPage() {
         {/* Stats */}
         <section className="mt-8 grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-white/[.04] p-4 md:p-5">
-            <h3 className="mb-3 text-sm font-medium text-white/70">Preview (unsaved)</h3>
+            <h3 className="mb-3 text-sm font-medium text-white/70">Current Calculation</h3>
             <div className="grid grid-cols-2 gap-3">
               <StatCard label="Line Items" value={preview.lineItemCount} />
               <StatCard label="Total Quantity" value={preview.totalQuantity} />
@@ -127,7 +127,9 @@ export default function ItemsPage() {
 
           <div className="rounded-2xl border border-white/10 bg-white/[.04] p-4 md:p-5">
             <h3 className="mb-3 text-sm font-medium text-white/70">
-              {global ? "Global (saved)" : "Global (saved) — no data yet"}
+              <h3 className="mb-3 text-sm font-medium text-white/70">
+                {global ? "Saved Totals" : "Saved Totals — no data yet"}
+              </h3>
             </h3>
             <div className="grid grid-cols-2 gap-3">
               <StatCard label="Line Items" value={global?.lineItemCount ?? 0} />
