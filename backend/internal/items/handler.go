@@ -277,17 +277,3 @@ func (h *Handler) DeleteOne(w http.ResponseWriter, r *http.Request) {
 	}
 	httpx.OK(w, "deleted", nil)
 }
-
-// DELETE /api/items  (clear all)
-func (h *Handler) DeleteAll(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodDelete {
-		httpx.Error(w, http.StatusMethodNotAllowed, "method not allowed")
-		return
-	}
-	repo := Repo{DB: h.DB}
-	if err := repo.DeleteAll(r.Context()); err != nil {
-		httpx.Error(w, http.StatusInternalServerError, "clear failed")
-		return
-	}
-	httpx.OK(w, "cleared", nil)
-}

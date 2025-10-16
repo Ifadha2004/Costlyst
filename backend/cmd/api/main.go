@@ -47,7 +47,6 @@ func main() {
 	mux.HandleFunc("GET /api/items",         httpx.WithCORS(origin, h.List))
 	mux.HandleFunc("PUT /api/items/",        httpx.WithCORS(origin, h.Update))     // expects /api/items/{id}
 	mux.HandleFunc("DELETE /api/items/",     httpx.WithCORS(origin, h.DeleteOne))  // expects /api/items/{id}
-	mux.HandleFunc("DELETE /api/items",      httpx.WithCORS(origin, h.DeleteAll))  // clear all
 
 	// Batch save + (optional) preview
 	mux.HandleFunc("POST /api/items/bulk",   httpx.WithCORS(origin, h.BulkInsert))

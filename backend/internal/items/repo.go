@@ -59,11 +59,6 @@ func (r *Repo) DeleteOne(ctx context.Context, id int64) (bool, error) {
 	return ct.RowsAffected() == 1, err
 }
 
-func (r *Repo) DeleteAll(ctx context.Context) error {
-	_, err := r.DB.Exec(ctx, `TRUNCATE TABLE items`)
-	return err
-}
-
 // UpdateWithMerge updates item {id}. If (name,price) collides with another row,
 // it merges quantities (add) and deletes the source row — all in a single tx.
 // Returns the final (possibly merged) row and whether a merge happened.

@@ -114,7 +114,7 @@ export default function Loader() {
         {/* CTA */}
         <motion.button
           onClick={() => nav("/items")}
-          className="mt-7 px-7 py-3 rounded-full text-black font-medium bg-gradient-to-r from-[#00E5FF] to-[#7A5CFF]
+          className="mt-7 px-7 py-3 rounded-full text-#E0D8D6 font-medium bg-gradient-to-r from-[#00E5FF] to-[#7A5CFF]
                      shadow-[0_0_30px_rgba(122,92,255,0.4),0_0_40px_rgba(0,229,255,0.3)]
                      hover:brightness-110 transition-all focus:outline-none"
           initial={{ opacity: 0, y: 8 }}
