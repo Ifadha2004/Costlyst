@@ -1,0 +1,205 @@
+{
+	"id": "bb6c16fa-c045-47ae-b41e-c9fae1fc900b",
+	"name": "Items API",
+	"timestamp": "2025-10-15T12:19:16.033Z",
+	"collection_id": "49259929-b0da9b6d-4f4e-410e-9139-f3698d5da220",
+	"folder_id": 0,
+	"environment_id": "49259929-56137670-7ea8-4340-9848-df4d9297022d",
+	"totalPass": 10,
+	"delay": 0,
+	"persist": true,
+	"status": "error",
+	"startedAt": "2025-10-15T12:19:15.722Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "0202a6d2-bbe4-4895-a5a1-734028638783",
+			"name": "00 - Health",
+			"url": "http://localhost:8080/healthz",
+			"time": 27,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK": true
+			},
+			"testPassFailCounts": {
+				"200 OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				27
+			],
+			"allTests": [
+				{
+					"200 OK": true
+				}
+			]
+		},
+		{
+			"id": "c6560133-f2c2-4f66-92cc-d3f2b54bf469",
+			"name": "01 - Clear All (reset)",
+			"url": "http://localhost:8080/api/items",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK": true,
+				"cleared": true
+			},
+			"testPassFailCounts": {
+				"200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"cleared": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"200 OK": true,
+					"cleared": true
+				}
+			]
+		},
+		{
+			"id": "80d78062-c2b3-45e2-85c6-0d61f84c1c13",
+			"name": "02 - Preview (no save, batch stats only)",
+			"url": "http://localhost:8080/api/items/preview",
+			"time": 1,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK": true
+			},
+			"testPassFailCounts": {
+				"200 OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1
+			],
+			"allTests": [
+				{
+					"200 OK": true
+				}
+			]
+		},
+		{
+			"id": "bf003f32-9b11-4a7c-9ebc-e0e368ab1fe0",
+			"name": "03 - Bulk Save (first batch)",
+			"url": "http://localhost:8080/api/items/bulk",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK": true,
+				"saved": true,
+				"has batch + global": true
+			},
+			"testPassFailCounts": {
+				"200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"saved": {
+					"pass": 1,
+					"fail": 0
+				},
+				"has batch + global": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"200 OK": true,
+					"saved": true,
+					"has batch + global": true
+				}
+			]
+		},
+		{
+			"id": "c95c565d-80ff-454b-9e69-a0606fd10a50",
+			"name": "04 - Bulk Save (merge duplicates, second batch)",
+			"url": "http://localhost:8080/api/items/bulk",
+			"time": 2,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK": true,
+				"batch totals right": true
+			},
+			"testPassFailCounts": {
+				"200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"batch totals right": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2
+			],
+			"allTests": [
+				{
+					"200 OK": true,
+					"batch totals right": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 50,
+	"collection": {
+		"requests": [
+			{
+				"id": "0202a6d2-bbe4-4895-a5a1-734028638783",
+				"method": "GET"
+			},
+			{
+				"id": "c6560133-f2c2-4f66-92cc-d3f2b54bf469",
+				"method": "DELETE"
+			},
+			{
+				"id": "80d78062-c2b3-45e2-85c6-0d61f84c1c13",
+				"method": "POST"
+			},
+			{
+				"id": "bf003f32-9b11-4a7c-9ebc-e0e368ab1fe0",
+				"method": "POST"
+			},
+			{
+				"id": "c95c565d-80ff-454b-9e69-a0606fd10a50",
+				"method": "POST"
+			},
+			{
+				"id": "04f20c14-0ddc-4a85-bd01-673b4450a9b9",
+				"method": "GET"
+			}
+		]
+	}
+}
